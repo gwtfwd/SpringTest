@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.SpringTest.dao.BoardMapper">
+	
+	<insert id="setBoard">
+		insert into board (title,contents, author) values (#{title}, #{contents},#{author})
+	</insert>
+  
+	<select id="getBoards" resultType="kr.green.SpringTest.dao.Board">
+		select * from board
+	</select>
+	
+	<select id="getBoardById" resultType="kr.green.SpringTest.dao.Board">
+		select * from board where number = #{number}
+	</select>
+	
+	<update id="modifyBoardById">
+		update board set title=#{title}, contents=#{contents}, author=#{author} where number=#{number}
+	</update>
+	
+	<select id="getPageBoards" resultType="kr.green.SpringTest.dao.Board">
+		select * from board order by number desc limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="getBoardsCount" resultType="java.lang.Integer">
+		select count(number) from board
+	</select>
+	
+	<!-- 제목검색 -->
+	<select id="getPageBoardsByTitle" resultType="kr.green.SpringTest.dao.Board">
+		select * from board where title like #{search} order by number desc limit #{p.pageStart}, #{p.perPageNum}
+	</select>
+	
+	<select id="getBoardsCountByTitle" resultType="java.lang.Integer">
+		select count(number) from board where title like #{search}
+	</select>
+		
+	<!-- 내용검색 -->	
+	<select id="getPageBoardsByContents" resultType="kr.green.SpringTest.dao.Board">
+		select * from board where contents like #{search} order by number desc limit #{p.pageStart}, #{p.perPageNum}
+	</select>
+	
+	<select id="getBoardsCountByContents" resultType="java.lang.Integer">
+		select count(number) from board where contents like #{search}
+	</select>
+	
+	<!-- 저자검색 -->
+	<select id="getPageBoardsByAuthor" resultType="kr.green.SpringTest.dao.Board">
+		select * from board where author like #{search} order by number desc limit #{p.pageStart}, #{p.perPageNum}
+	</select>
+	
+	<select id="getBoardsCountByAuthor" resultType="java.lang.Integer">
+		select count(number) from board where author like #{search}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+

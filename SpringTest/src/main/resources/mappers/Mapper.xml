@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.SpringTest.dao.Mapper">
+	
+	<select id="getId" resultType="String">
+		select id from account where id = #{id}
+	</select>
+	  
+	<select id="getPw" resultType="String">
+	    select pw from account where id = #{id}
+	</select>
+	  
+	<select id="getEmail" resultType="String">
+	    select email from account where id = #{id}
+	</select>
+	  
+	<select id="getUser" resultType="kr.green.SpringTest.dao.User">
+	    select * from account where id = #{id}
+	</select>
+	  
+	<insert id="setUser">
+		insert into account (id, pw, email) values (#{id}, #{pw}, #{email})
+	</insert>
+	
+	<select id="login" resultType="kr.green.SpringTest.dao.User">
+		select * from account where id = #{id} and pw = #{pw}
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
