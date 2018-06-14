@@ -22,6 +22,8 @@ public class MemberController {
 	public String memberSignupGet() {
 		return "/WEB-INF/views/member/signup.jsp";
 	}
+	
+	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String memberSignupPost(
 		HttpServletRequest request, Model model) {
@@ -33,6 +35,8 @@ public class MemberController {
 		mapper.setUser(id, pw, email);
 		return "redirect:/member/signup/success";
 	}
+	
+	
 	@RequestMapping(value ="/signup/success", 
 			method = RequestMethod.GET)
 	public String memberSignupSuccessGet(
